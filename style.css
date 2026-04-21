@@ -1,0 +1,412 @@
+/* 1. Nhúng font và áp dụng toàn trang */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+* {
+    font-family: 'Comfortaa', cursive;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Kệ sách dùng Grid để chia 5 cột đều tăm tắp */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.book-item img {
+    width: 100%;
+    aspect-ratio: 2/3; /* Ép mọi ảnh về tỉ lệ chuẩn của bìa sách */
+    object-fit: cover; /* Tự cắt/giãn ảnh cho vừa khung mà không làm méo */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.book-item p {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+
+/* Định dạng bảng thống kê */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #eee;
+    padding: 12px;
+}
+
+th { background-color: #f9f9f9; }
+
+.category-title { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+.subcategory-title { font-style: italic; color: #7f8c8d; margin: 20px 0; }
+
+/* Style riêng cho trang chủ */
+.home-page .banner img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.quote {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.intro {
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Biến bảng điều hướng thành các nút bấm đẹp */
+.nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột như trong Rentry của Bee */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.nav-item {
+    display: block;
+    padding: 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+    transform: translateY(-2px); /* Hiệu ứng nhấn nút */
+}
+/* Trang trí nút chuyển Tab */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    border: 2px solid #2c3e50;
+    background: transparent;
+    color: #2c3e50;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: #2c3e50;
+    color: white;
+}
+
+/* Hiệu ứng ẩn hiện */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CANH CHỈNH HÌNH BÌA (ĐÃ ĐỒNG BỘ SIZE) --- */
+
+.main-banner {
+    width: 100%;             
+    max-width: 1200px;       
+    height: 400px;           /* <--- SỬA DÒNG NÀY: Cố định chiều cao 400px cho tất cả các trang */
+    margin: 0 auto;         
+    overflow: hidden;        
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;     /* Thêm dòng này cho bo góc xinh xẻo nè */
+}
+
+.banner-image {
+    width: 100%;             
+    height: 100%;            /* <--- ĐẢM BẢO DÒNG NÀY LÀ 100% để nó lấp đầy cái 300px ở trên */
+    object-fit: cover;       /* <--- SỬA THÀNH 'cover': Để hình luôn đầy khung, không bị khoảng trắng 2 bên */
+    object-position: center; /* Giữ cho mặt con mèo luôn ở giữa */
+}
+
+/* Tìm và thay thế đoạn tiêu đề bằng đoạn này */
+h1, h2, h3, h4 {
+    font-weight: 700;    /* Độ đậm nhất của Comfortaa */
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #2c3e50;      /* Màu xanh đen cho sắc nét */
+}
+
+/* In đậm thêm cho các tiêu đề trong bảng (Thống kê) */
+th, strong {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 32px; /* Chỉnh to ra cho oai nè */
+    text-transform: uppercase; /* Viết hoa toàn bộ cho chất */
+}
+/* Canh chỉnh lưới sách */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.book-item {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.book-item:hover {
+    transform: translateY(-5px); /* Hiệu ứng bay lên khi di chuột vào */
+}
+
+.book-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.book-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.book-author {
+    font-size: 0.8rem;
+    color: #666;
+}
+/* --- STYLE CHO TRANG READING --- */
+
+.current-card {
+    display: flex;
+    gap: 30px;
+    background: #fffaf0; /* Màu hơi kem cho dịu mắt */
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px dashed #e67e22;
+    margin-top: 20px;
+}
+
+.book-cover-large {
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+.status-badge {
+    background: #e67e22;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #f39c12, #e67e22);
+    border-radius: 10px;
+}
+
+/* Cho nó responsive xíu trên điện thoại */
+@media (max-width: 600px) {
+    .current-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+/* BEE'S PROGRESS NOTES:
+   - Progress: 10% — Just here for the aesthetics 💅
+   - Progress: 50% — Halfway to becoming an intellectual 🧐 
+   - Progress: 99% — Avoidance level: Expert 🏃‍♂️ 
+   - Progress: 0% — I just like the cover, okay? 🙄 
+*/
+/* Tag cho sách đang đọc:
+- STILL FIGHTING FOR MY LIFE ⚔️ 
+- SURVIVING THROUGH THE CHAPTERS 🚑 
+- READING UNTIL MY BRAIN SHORT-CIRCUITS 🔌 
+- LITERALLY IN ANOTHER UNIVERSE 🌌 
+- PRETENDING TO BE AN INTELLECTUAL 🧐 
+- READING FOR THE AESTHETIC 💅 
+- MY LAST 2 BRAIN CELLS ARE STRUGGLING 🧠 
+- EYES ON BOOK, MIND ON FOOD 🍟 
+- LONG DISTANCE RELATIONSHIP ✈️ 
+- ON A BREAK (LIKE ROSS & RACHEL) 💔 
+- GHOSTED BY THE PLOT 👻 
+- IT'S NOT YOU, IT'S MY ATTENTION SPAN 🙄 
+*/
+/*Tag cho mấy sách đã đọc xong:
+- MIRACLE HAPPENED 🕯️ 
+- I ACTUALLY FINISHED IT 😱 
+- SURVIVED TILL THE END 🏁 
+- BRAIN UPGRADE: 100% ✅
+- CERTIFIED INTELLECTUAL 💅 
+- I READ, I FORGOT 🧠💨 
+- BOOK 1 - BRAIN 0 🏳️ 
+- GOODBYE OLD FRIEND 🥀 
+- SLAYED THE PLOT 💅⚔️ 
+*/
+/* GIAO DIỆN TRANG THOUGHTS */
+.thoughts-container {
+    max-width: 600px; /* Độ rộng vừa phải cho dễ đọc */
+    margin: 0 auto;
+}
+
+.review-card {
+    background: #ffffff;
+    border-radius: 25px; /* Bo góc cực mạnh như Bee muốn */
+    border: 1px solid #f0f0f0;
+    margin-bottom: 25px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.review-summary {
+    list-style: none; /* Ẩn dấu mũi tên mặc định */
+    outline: none;
+}
+
+.summary-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.thought-cover {
+    width: 90px; /* Ảnh bìa nằm góc trên bên trái */
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
+}
+
+.book-meta h3 {
+    margin: 8px 0 2px 0;
+    font-size: 1.3rem;
+    color: #2c3e50;
+}
+
+.author-name {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Hiệu ứng khi mở Review */
+.review-card[open] {
+    border: 1px solid #ffde59; /* Đổi màu viền khi mở ra */
+}
+
+.thought-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    padding: 10px;
+    background: #fffcf2; /* Màu nền giấy nhẹ nhàng */
+    border-radius: 15px;
+    white-space: pre-line; /* Để Bee xuống dòng trong code nó cũng hiện ra web */
+}
+/* Khung bọc ngoài của mỗi cuốn sách */
+.current-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border: 2px solid #2ecc71; /* Màu xanh của Bee */
+}
+
+/* Định dạng ảnh bìa */
+.book-cover-large {
+    width: 160px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Phần chứa chữ bên phải */
+.book-details {
+    margin-left: 20px;
+    text-align: left; /* Để nó đồng bộ với các cuốn dưới */
+}
+
+/* Cái tag xanh "Miracle Happened" */
+.status-badge {
+    background-color: #2ecc71;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Tiêu đề sách */
+.book-details {
+    flex: 1; /* Để nó chiếm hết phần trống bên phải */
+    padding-left: 20px;
+    text-align: left !important; /* Thêm !important để ép nó phải nghe lời, căn lề trái */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Giúp chữ nằm giữa theo chiều dọc của cái ảnh */
+    align-items: flex-start; /* Ép mọi thứ bên trong (tag, h2, p) phải bám lề trái */
+}
+
+/* Dòng Vibe Check */
+.rating-container p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
